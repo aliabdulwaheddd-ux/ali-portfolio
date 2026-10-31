@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>علي عبد الواحد | البورتفوليو الأكاديمي والمهني</title>
+<style>
+:root {
+  --site-primary: #123c3a;
+  --site-on-primary: #ffffff;
+  --site-secondary: #d5a65a;
+  --site-on-secondary: #182321;
+  --site-background: #f3f2ec;
+  --site-on-background: #172522;
+  --site-font-body: "Tahoma", "Arial", sans-serif;
+  --site-font-heading: "Tahoma", "Arial", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  --surface: #ffffff;
+  --muted: #687772;
+  --line: #e3e7df;
+  --soft: #e9efea;
+  color-scheme: light dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); line-height: 1.8; }
+#app { min-height: 100vh; width: 100%; background-color: var(--site-background); color: var(--site-on-background); border-radius: 0; overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+.container { width: min(1120px, calc(100% - 40px)); margin: auto; }
+header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--site-background) 92%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.nav { display:flex; align-items:center; justify-content:space-between; min-height:76px; gap:20px; }
+.brand { display:flex; align-items:center; gap:12px; font-weight:800; color:var(--site-primary); }
+.brand-mark { width:42px; height:42px; border-radius: calc(13px * var(--site-radius-scale)); display:grid; place-items:center; color:var(--site-on-primary); background:var(--site-primary); font-size:18px; }
+nav { display:flex; gap:22px; align-items:center; color:var(--muted); font-size:14px; }
+nav a:hover, nav a.active { color:var(--site-primary); }
+.menu-btn { display:none; border:1px solid var(--line); border-radius:10px; padding:8px 12px; background:var(--surface); color:var(--site-on-background); }
+.hero { background:var(--site-primary); color:var(--site-on-primary); position:relative; overflow:hidden; }
+.hero::before, .hero::after { content:""; position:absolute; border:1px solid rgba(255,255,255,.14); border-radius:50%; opacity:var(--site-decoration-opacity); pointer-events:none; }
+.hero::before { width:460px; height:460px; left:-130px; top:-220px; }
+.hero::after { width:300px; height:300px; left:90px; bottom:-210px; }
+.hero-inner { min-height:510px; display:grid; grid-template-columns:1.25fr .75fr; align-items:center; gap:40px; padding:70px 0; position:relative; z-index:1; }
+.eyebrow { color:var(--site-secondary); font-weight:700; letter-spacing:.08em; font-size:13px; }
+h1,h2,h3 { font-family:var(--site-font-heading); line-height:1.35; }
+h1 { font-size:calc(48px * var(--site-heading-scale)); margin:14px 0 12px; }
+.hero p { max-width:650px; color:rgba(255,255,255,.78); font-size:17px; margin:0 0 28px; }
+.hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
+.btn { display:inline-flex; align-items:center; justify-content:center; padding:11px 20px; border-radius:calc(12px * var(--site-radius-scale)); font-weight:700; transition:.2s; border:1px solid transparent; }
+.btn.primary { background:var(--site-secondary); color:var(--site-on-secondary); }
+.btn.outline { border-color:rgba(255,255,255,.35); color:#fff; }
+.btn:hover { transform:translateY(-2px); }
+.hero-card { justify-self:center; width:min(300px,100%); aspect-ratio:1; border-radius:50%; border:1px solid rgba(255,255,255,.22); display:grid; place-items:center; background:radial-gradient(circle at 35% 30%, rgba(213,166,90,.25), rgba(255,255,255,.04) 58%, transparent 60%); }
+.hero-card-inner { width:72%; aspect-ratio:1; border-radius:50%; border:1px solid rgba(213,166,90,.65); display:grid; place-items:center; color:var(--site-secondary); font-size:76px; font-weight:800; }
+.hero-meta { display:flex; gap:24px; flex-wrap:wrap; color:rgba(255,255,255,.72); font-size:13px; margin-top:30px; }
+.hero-meta span::before { content:"•"; color:var(--site-secondary); margin-left:8px; }
+section { padding:calc(76px * var(--site-spacing-scale)) 0; scroll-margin-top:80px; }
+.section-head { margin-bottom:32px; }
+.section-kicker { color:#a77a34; font-size:13px; font-weight:800; }
+h2 { font-size:calc(32px * var(--site-heading-scale)); margin:5px 0 8px; color:var(--site-primary); }
+.section-head p { color:var(--muted); margin:0; max-width:700px; }
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.panel { background:var(--surface); border:1px solid var(--line); border-radius:calc(20px * var(--site-radius-scale)); padding:28px; }
+.about-copy { font-size:16px; color:#44534e; }
+.highlights { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.highlight { background:var(--soft); border-radius:14px; padding:18px; }
+.highlight strong { display:block; font-size:25px; color:var(--site-primary); }
+.highlight span { color:var(--muted); font-size:13px; }
+.skills-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+.skill { background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px 16px; min-height:175px; }
+.skill-icon { width:42px; height:42px; display:grid; place-items:center; border-radius:12px; background:var(--soft); color:var(--site-primary); font-size:20px; margin-bottom:12px; }
+.skill h3 { margin:0 0 8px; font-size:16px; color:var(--site-primary); }
+.skill p { margin:0; color:var(--muted); font-size:13px; }
+.projects-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.project { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:24px; display:flex; flex-direction:column; min-height:220px; }
+.project-top { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.project-icon { font-size:25px; width:48px; height:48px; display:grid; place-items:center; background:var(--soft); border-radius:14px; }
+.tag { background:#f3eadb; color:#805b23; border-radius:30px; padding:4px 10px; font-size:11px; font-weight:700; white-space:nowrap; }
+.project h3 { color:var(--site-primary); margin:16px 0 7px; font-size:19px; }
+.project p { color:var(--muted); font-size:14px; margin:0; }
+.project.featured { grid-column:span 2; background:var(--site-primary); color:#fff; border-color:var(--site-primary); }
+.project.featured h3 { color:#fff; }
+.project.featured p { color:rgba(255,255,255,.78); }
+.project.featured .project-icon { background:rgba(255,255,255,.12); }
+.project.featured .tag { background:var(--site-secondary); color:#172522; }
+.timeline { position:relative; display:grid; gap:14px; }
+.timeline-item { display:grid; grid-template-columns:190px 1fr; gap:20px; background:var(--surface); border:1px solid var(--line); padding:20px 24px; border-radius:16px; }
+.timeline-label { color:#9b702f; font-weight:800; font-size:13px; }
+.timeline-item h3 { margin:0 0 4px; color:var(--site-primary); font-size:17px; }
+.timeline-item p { margin:0; color:var(--muted); font-size:14px; }
+.contact { background:var(--site-primary); color:#fff; }
+.contact h2 { color:#fff; }
+.contact .section-head p { color:rgba(255,255,255,.7); }
+.contact-card { display:flex; justify-content:space-between; align-items:center; gap:20px; border:1px solid rgba(255,255,255,.2); border-radius:18px; padding:24px; }
+.contact-card p { margin:0; color:rgba(255,255,255,.76); }
+.contact-card strong { display:block; color:var(--site-secondary); margin-bottom:4px; }
+footer { background:#0d2e2d; color:rgba(255,255,255,.65); padding:20px 0; font-size:12px; text-align:center; }
+@media (prefers-color-scheme: dark) {
+  :root { --surface:#1d2927; --muted:#aebbb5; --line:#35433e; --soft:#293a35; --site-background:#111a18; --site-on-background:#edf2ee; }
+  .about-copy { color:#c5d0ca; }
+  .tag { background:#443824; color:#f0cf92; }
+}
+@media (max-width:850px) {
+  .hero-inner { grid-template-columns:1fr; text-align:center; }
+  .hero p { margin-left:auto; margin-right:auto; }
+  .hero-actions,.hero-meta { justify-content:center; }
+  .hero-card { grid-row:1; width:210px; }
+  .skills-grid { grid-template-columns:repeat(2,1fr); }
+  .about-grid { grid-template-columns:1fr; }
+}
+@media (max-width:620px) {
+  .container { width:min(100% - 28px,1120px); }
+  .nav { min-height:66px; }
+  .menu-btn { display:block; }
+  nav { display:none; position:absolute; top:66px; right:14px; left:14px; padding:14px; flex-direction:column; align-items:stretch; background:var(--surface); border:1px solid var(--line); border-radius:14px; box-shadow:0 12px 30px rgba(0,0,0,.12); }
+  nav.open { display:flex; }
+  nav a { padding:7px 10px; }
+  h1 { font-size:calc(36px * var(--site-heading-scale)); }
+  h2 { font-size:calc(27px * var(--site-heading-scale)); }
+  .hero-inner { min-height:unset; padding:48px 0 55px; gap:20px; }
+  .hero-card { width:160px; }
+  .hero-card-inner { font-size:48px; }
+  .projects-grid { grid-template-columns:1fr; }
+  .project.featured { grid-column:auto; }
+  .timeline-item { grid-template-columns:1fr; gap:4px; }
+  .skills-grid { gap:10px; }
+  .skill { min-height:unset; }
+  .contact-card { align-items:flex-start; flex-direction:column; }
+}
+</style>
+</head>
+<body>
+<div id="app">
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home"><span class="brand-mark">ع</span><span>علي عبد الواحد</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة">القائمة ☰</button>
+    <nav id="mainNav" aria-label="التنقل الرئيسي">
+      <a href="#about">نبذة عني</a><a href="#skills">المهارات</a><a href="#projects">المشاريع</a><a href="#experience">الإنجازات</a><a href="#contact">التواصل</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero" id="home">
+  <div class="container hero-inner">
+    <div>
+      <div class="eyebrow">ACADEMIC & PROFESSIONAL PORTFOLIO</div>
+      <h1>أحوّل الأفكار الهندسية<br>إلى حلول ذكية.</h1>
+      <p>علي عبد الواحد إبراهيم مهدي — طالب هندسة ميكاترونكس في جامعة البصرة، مهتم بدمج الأنظمة الميكانيكية والإلكترونية مع الذكاء الاصطناعي والرؤية الحاسوبية.</p>
+      <div class="hero-actions"><a class="btn primary" href="#projects">استكشف مشاريعي</a><a class="btn outline" href="#contact">تواصل معي</a></div>
+      <div class="hero-meta"><span>هندسة الميكاترونكس</span><span>المرحلة الثالثة</span><span>جامعة البصرة</span></div>
+    </div>
+    <div class="hero-card" aria-label="رمز هندسي"><div class="hero-card-inner">ع</div></div>
+  </div>
+</section>
+<section id="about">
+  <div class="container">
+    <div class="section-head"><div class="section-kicker">01 / ABOUT ME</div><h2>نبذة شخصية</h2><p>شغف بالتقاطع بين الهندسة والبرمجة والتصنيع الرقمي.</p></div>
+    <div class="about-grid">
+      <div class="panel about-copy">أنا علي عبد الواحد، طالب في المرحلة الثالثة بقسم هندسة الميكاترونكس في جامعة البصرة. أمتلك شغفاً حقيقياً بدمج الأنظمة الميكانيكية والإلكترونية مع تقنيات الذكاء الاصطناعي والرؤية الحاسوبية (Computer Vision) لتطوير حلول هندسية مبتكرة وأنظمة تفاعلية ذكية. خلال مسيرتي الأكاديمية، سعيت دائماً لتحويل النظريات العلمية إلى مشاريع عملية ملموسة، بدءاً من بناء النماذج الحركية وصولاً إلى تصميم محطات التصنيع الرقمي المتكاملة والمنافسة بها وطنياً. أطمح إلى توظيف مهاراتي في البرمجة والتصميم والتصنيع لخلق تكنولوجيا تلبي متطلبات المستقبل وتواكب التطور الصناعي السريع.</div>
+      <div class="panel"><div class="highlights">
+        <div class="highlight"><strong>06</strong><span>مشاريع هندسية وبرمجية</span></div>
+        <div class="highlight"><strong>04</strong><span>تقنيات تصنيع ضمن Multi-Vision X</span></div>
+        <div class="highlight"><strong>02</strong><span>دورات MechaTech تخصصية</span></div>
+        <div class="highlight"><strong>01</strong><span>مشاركة وطنية NURAI</span></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+<section id="skills" style="background:var(--soft)">
+  <div class="container">
+    <div class="section-head"><div class="section-kicker">02 / TECHNICAL SKILLS</div><h2>المهارات التقنية</h2><p>مجموعة من الأدوات والتقنيات المستخدمة في مشاريعي الأكاديمية والتطبيقية.</p></div>
+    <div class="skills-grid">
+      <article class="skill"><div class="skill-icon">⌘</div><h3>البرمجة والذكاء الاصطناعي</h3><p>Computer Vision<br>Object-Oriented Programming (OOP)</p></article>
+      <article class="skill"><div class="skill-icon">⌁</div><h3>الأنظمة المدمجة</h3><p>Arduino، ESP32<br>Blynk وIoT</p></article>
+      <article class="skill"><div class="skill-icon">◈</div><h3>التصميم والمحاكاة</h3><p>SolidWorks<br>Multisim</p></article>
+      <article class="skill"><div class="skill-icon">⌘</div><h3>الأدوات وإدارة المشاريع</h3><p>GitHub<br>OAuth عبر Google Cloud</p></article>
+    </div>
+  </div>
+</section>
+<section id="projects">
+  <div class="container">
+    <div class="section-head"><div class="section-kicker">03 / SELECTED WORK</div><h2>المشاريع الهندسية والبرمجية</h2><p>نماذج عملية تجمع بين التصميم الميكانيكي والتحكم والإلكترونيات والبرمجة.</p></div>
+    <div class="projects-grid">
+      <article class="project featured"><div class="project-top"><div class="project-icon">⚙</div><span class="tag">المشروع الشامل · NURAI</span></div><h3>Multi-Vision X — محطة التصنيع المتكاملة</h3><p>ابتكار وتجميع ماكينة تصنيع رقمية مدمجة تجمع بين أربع تقنيات صناعية متقدمة: Resin وFDM وCNC وLaser Engraving، داخل نظام تحكم ميكانيكي وإلكتروني واحد. تمت المشاركة بهذا المشروع في بطولة العراق (NURAI).</p></article>
+      <article class="project"><div class="project-top"><div class="project-icon">✋</div><span class="tag">Robotics · Vision</span></div><h3>اليد الروبوتية التفاعلية</h3><p>تصميم وتصنيع يد روبوتية تتفاعل وتتزامن حركياً وبشكل لحظي مع حركة يد المستخدم الطبيعية اعتماداً على الرؤية الحاسوبية.</p></article>
+      <article class="project"><div class="project-top"><div class="project-icon">◉</div><span class="tag">Computer Vision</span></div><h3>Flappy Bird — التحكم برمشة العين</h3><p>تطوير مشروع برمجي للتحكم بلعبة Flappy Bird بالكامل من خلال تتبع حركة رمشة العين باستخدام تقنيات الرؤية الحاسوبية.</p></article>
+      <article class="project"><div class="project-top"><div class="project-icon">🦾</div><span class="tag">Mechanical Design</span></div><h3>الذراع الروبوتية</h3><p>بناء وتجميع ذراع روبوتية متعددة المفاصل وعرضها رسمياً في فعاليات يوم الجامعة.</p></article>
+      <article class="project"><div class="project-top"><div class="project-icon">⌁</div><span class="tag">Arduino · Control</span></div><h3>نظام التحكم الذكي لبوابة المرآب</h3><p>برمجة وتصميم نظام تحكم آلي بالاعتماد على متحكم الأردوينو.</p></article>
+      <article class="project"><div class="project-top"><div class="project-icon">⛭</div><span class="tag">Applied Mechanics</span></div><h3>نموذج نظام البكرات الميكانيكي</h3><p>تصميم وتصنيع نموذج فيزيائي تطبيقي لآلية عمل البكرات المعلقة وتجهيز تقرير هندسي تحليلي حوله.</p></article>
+    </div>
+  </div>
+</section>
+<section id="experience" style="background:var(--soft)">
+  <div class="container">
+    <div class="section-head"><div class="section-kicker">04 / ACTIVITIES & RECOGNITION</div><h2>المسابقات والأنشطة والتدريب</h2><p>مشاركات أكاديمية وتدريبية دعمت الخبرة العملية والتواصل الهندسي.</p></div>
+    <div class="timeline">
+      <article class="timeline-item"><div class="timeline-label">NATIONAL COMPETITION</div><div><h3>بطولة العراق الوطنية — NURAI</h3><p>تمثيل قسم هندسة الميكاترونكس بجامعة البصرة والمنافسة عبر استعراض مشروع Multi-Vision X، والحصول على شهادة مشاركة وتقدير لابتكار أنظمة متقدمة.</p></div></article>
+      <article class="timeline-item"><div class="timeline-label">UNIVERSITY EVENT</div><div><h3>السباق الهندسي الجامعي</h3><p>التأهل للمشاركة وإتمام بناء النماذج الهندسية استعداداً للسباق الخاص بالجامعة.</p></div></article>
+      <article class="timeline-item"><div class="timeline-label">MECHATECH SUMMER SCHOOL</div><div><h3>المدرسة الصيفية</h3><p>إتمام دورتين تخصصيتين بنجاح في ESP32 وRobotics and Drones والحصول على شهادات معتمدة.</p></div></article>
+      <article class="timeline-item"><div class="timeline-label">PAO TRAINING</div><div><h3>تدريب منظمة PAO</h3><p>تمثيل قسم هندسة الميكاترونكس رسمياً في البرنامج التدريبي والحصول على شهادة مشاركة.</p></div></article>
+      <article class="timeline-item"><div class="timeline-label">WORKSHOPS & SEMINARS</div><div><h3>المعارض والورش والزيارات العلمية</h3><p>المشاركة في معارض القسم حول PLC والذكاء الاصطناعي وSolidWorks وESP32، وحضور ندوات متخصصة أبرزها تكنولوجيا الطائرات المسيرة والمشاركة في السفرات العلمية للقسم.</p></div></article>
+    </div>
+  </div>
+</section>
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-head"><div class="section-kicker">05 / CONTACT</div><h2>لنتواصل ونتبادل الأفكار</h2><p>مهتم بالتقنيات الهندسية والمشاريع التي تجمع بين الميكاترونكس والروبوتات والذكاء الاصطناعي.</p></div>
+    <div class="contact-card"><div><strong>LinkedIn</strong><p><a href="https://www.linkedin.com/in/ali-abdulwahed-7270a235a?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener noreferrer">linkedin.com/in/ali-abdulwahed-7270a235a ↗</a></p><strong style="margin-top:12px">رقم الهاتف</strong><p><a href="tel:07732346920" dir="ltr">07732346920</a></p></div><a class="btn primary" href="#home">العودة إلى الأعلى ↑</a></div>
+  </div>
+</section>
+</main>
+<footer><div class="container">© 2026 علي عبد الواحد إبراهيم مهدي · البورتفوليو الأكاديمي والمهني</div></footer>
+</div>
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const nav = document.getElementById('mainNav');
+menuBtn.addEventListener('click', () => nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
+</script>
+
+<!--sites-preview-theme:start-->
+<style data-sites-preview-theme>:root{--site-primary:#2c67c5 !important;--site-on-primary:#ffffff !important;--site-spacing-scale:1.05 !important;--site-radius-scale:0.9 !important;--site-font-body:ui-monospace,monospace !important;--site-font-heading:ui-monospace,monospace !important;--site-heading-scale:0.75 !important}</style>
+<script type="application/json" data-sites-preview-theme>{"appearance":"custom","primary":"#2c67c5","secondary":"#d5a65a","background":"#f3f2ec","typography":"technical","spacing":1.05,"roundness":0.9,"headingScale":0.75,"decorationOpacity":1}</script>
+<!--sites-preview-theme:end-->
+</body>
+</html>
